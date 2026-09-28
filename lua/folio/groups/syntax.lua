@@ -90,7 +90,7 @@ return function(hl, c, config)
   hl["@string.special.path"] = string
   hl["@string.special.url"] = with(string, { underline = true })
   hl["@character"] = string
-  hl["@character.special"] = { fg = syn.special }
+  hl["@character.special"] = { fg = c.fg3 } -- wildcards, globs: markers, not literals
   hl["@boolean"] = constant
   hl["@number"] = constant
   hl["@number.float"] = constant

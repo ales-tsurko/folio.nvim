@@ -24,19 +24,27 @@ printed in dense ink.
 The idea of the mid-grey page comes from
 [e-ink.nvim](https://github.com/e-ink-colorscheme/e-ink.nvim).
 
+![folio, light](assets/light.png)
+
+![folio, dark](assets/dark.png)
+
+![telescope and bufferline in folio](assets/interface.png)
+
+<sub>Rust with rust-analyzer; telescope.nvim and bufferline.nvim. Font: Victor Mono.</sub>
+
 ## The page
 
 | Words                                   | Style   | Light     | Dark      |
 | --------------------------------------- | ------- | --------- | --------- |
-| variables, fields, calls                |         | `#2e2e2e` | `#d3d3d3` |
-| function and type definitions           | bold    | `#2e2e2e` | `#d3d3d3` |
-| keywords                                | bold    | `#474747` | `#bcbcbc` |
-| types, `self`/`this`                    | cursive | `#4f4f4f` | `#b4b4b4` |
-| operators, punctuation, modules         |         | `#5e5e5e` | `#a4a4a4` |
-| comments                                | cursive | `#767676` | `#979797` |
+| variables, fields, calls                |         | `#2e2e2e` | `#cfcfcf` |
+| function and type definitions           | bold    | `#2e2e2e` | `#cfcfcf` |
+| keywords                                | bold    | `#474747` | `#b6b6b6` |
+| types, `self`/`this`                    | cursive | `#4f4f4f` | `#adadad` |
+| operators, punctuation, modules         |         | `#5e5e5e` | `#9c9c9c` |
+| comments                                | cursive | `#767676` | `#8e8e8e` |
 | strings                                 |         | `#33547e` | `#9abbde` |
 | numbers, booleans, `nil`, escapes       |         | `#984041` | `#d78e8d` |
-| paper                                   |         | `#cacdce` | `#4b4d4f` |
+| paper                                   |         | `#cacdce` | `#3e4042` |
 
 Colours are shown at the default `saturation = 0.6`. They are computed in
 OKLCH, so each keeps its lightness while the saturation changes.
@@ -194,4 +202,5 @@ lua/folio/groups/plugins.lua  plugins
 lua/folio/terminal.lua        ANSI colours
 lua/lualine/themes/folio.lua  lualine
 extras/                       terminal themes + generator
+assets/                       screenshots
 ```

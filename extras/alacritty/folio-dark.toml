@@ -1,32 +1,32 @@
 # folio-dark — generated from the folio palette by extras/generate.lua
 [colors.primary]
-background = "#4b4d4f"
-foreground = "#d3d3d3"
+background = "#3e4042"
+foreground = "#cfcfcf"
 
 [colors.cursor]
-cursor = "#d3d3d3"
-text = "#4b4d4f"
+cursor = "#cfcfcf"
+text = "#3e4042"
 
 [colors.selection]
-background = "#6f7273"
-text = "#d3d3d3"
+background = "#646668"
+text = "#cfcfcf"
 
 [colors.normal]
-black = "#686a6c"
+black = "#5c5e60"
 red = "#d78e8d"
 green = "#93c887"
 yellow = "#dac287"
 blue = "#9abbde"
 magenta = "#d793b3"
 cyan = "#8dc4bf"
-white = "#b4b4b4"
+white = "#adadad"
 
 [colors.bright]
-black = "#808080"
+black = "#757575"
 red = "#e8a2a1"
 green = "#97e187"
 yellow = "#efd595"
 blue = "#b0ceee"
 magenta = "#e7a8c5"
 cyan = "#8edbd5"
-white = "#d3d3d3"
+white = "#cfcfcf"
