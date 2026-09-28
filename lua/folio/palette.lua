@@ -52,21 +52,22 @@ M.variants = {
   },
 
   dark = {
+    -- a slate lifted towards mid-grey: a dark page, not a night one
     paper = {
-      soft = { bg = "#3b3d3f", bg_dim = "#484a4c", bg_deep = "#525456", bg_visual = "#5c5e60" },
-      medium = { bg = "#313335", bg_dim = "#454749", bg_deep = "#4b4d4f", bg_visual = "#525456" },
-      hard = { bg = "#27292b", bg_dim = "#3b3d3f", bg_deep = "#454749", bg_visual = "#484a4c" },
+      soft = { bg = "#595b5d", bg_dim = "#6d6f71", bg_deep = "#747678", bg_visual = "#7b7e7f" },
+      medium = { bg = "#4b4d4f", bg_dim = "#606264", bg_deep = "#686a6c", bg_visual = "#6f7273" },
+      hard = { bg = "#3e4042", bg_dim = "#545658", bg_deep = "#5c5e60", bg_visual = "#646668" },
     },
     ink = {
-      fg_strong = "#cacaca",
-      fg = "#cacaca",
-      fg_def = "#cacaca",
-      fg_dark = "#b0b0b0",
-      fg2 = "#a6a6a6",
-      fg3 = "#949494",
-      comment = "#858585",
-      fg4 = "#6a6a6a",
-      fg5 = "#565656",
+      fg_strong = "#d3d3d3",
+      fg = "#d3d3d3",
+      fg_def = "#d3d3d3",
+      fg_dark = "#bcbcbc",
+      fg2 = "#b4b4b4",
+      fg3 = "#a4a4a4",
+      comment = "#979797",
+      fg4 = "#808080",
+      fg5 = "#6f6f6f",
     },
     accent = {
       red = { 0.72, 20, 0.86 },
