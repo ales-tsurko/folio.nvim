@@ -1,0 +1,16 @@
+# folio-dark — generated from the folio palette by extras/generate.lua
+[metadata]
+name = "folio-dark"
+
+[colors]
+foreground = "#adadad"
+background = "#3a3a3a"
+cursor_bg = "#f0f0f0"
+cursor_fg = "#3a3a3a"
+cursor_border = "#f0f0f0"
+selection_bg = "#5b5b5b"
+selection_fg = "#f0f0f0"
+split = "#878787"
+scrollbar_thumb = "#4e4e4e"
+ansi = ["#4e4e4e", "#fe564d", "#12f348", "#fcd513", "#5aa8fd", "#ff44b0", "#19e8df", "#9a9a9a"]
+brights = ["#6b6b6b", "#fe796d", "#6dff79", "#ffe892", "#7ab9fe", "#fe56a3", "#1ffaf1", "#f0f0f0"]

@@ -1,0 +1,32 @@
+# folio-light — generated from the folio palette by extras/generate.lua
+[colors.primary]
+background = "#cccccc"
+foreground = "#505050"
+
+[colors.cursor]
+cursor = "#0d0d0d"
+text = "#cccccc"
+
+[colors.selection]
+background = "#aeaeae"
+text = "#0d0d0d"
+
+[colors.normal]
+black = "#333333"
+red = "#e4091c"
+green = "#0ba22d"
+yellow = "#ca7f0a"
+blue = "#0670ee"
+magenta = "#ff05a9"
+cyan = "#0e9a94"
+white = "#a0a0a0"
+
+[colors.bright]
+black = "#808080"
+red = "#ca0617"
+green = "#0a9028"
+yellow = "#b6720c"
+blue = "#0462d3"
+magenta = "#e60298"
+cyan = "#088984"
+white = "#666666"
