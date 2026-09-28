@@ -4,13 +4,13 @@ name = "folio-light"
 
 [colors]
 foreground = "#2e2e2e"
-background = "#cccccc"
+background = "#cacdce"
 cursor_bg = "#2e2e2e"
-cursor_fg = "#cccccc"
+cursor_fg = "#cacdce"
 cursor_border = "#2e2e2e"
-selection_bg = "#aeaeae"
+selection_bg = "#acafb0"
 selection_fg = "#2e2e2e"
 split = "#5e5e5e"
-scrollbar_thumb = "#b8b8b8"
+scrollbar_thumb = "#b6b9ba"
 ansi = ["#474747", "#984041", "#4f7447", "#8f764d", "#33547e", "#994972", "#4b716e", "#8a8a8a"]
 brights = ["#5e5e5e", "#8d2b2f", "#3e6734", "#826737", "#214673", "#8e3565", "#386461", "#4f4f4f"]

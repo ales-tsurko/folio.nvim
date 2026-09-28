@@ -1,7 +1,8 @@
 # folio.nvim
 
 A colour scheme for Neovim that looks like a page of e-paper: a matte
-mid-grey sheet, neither quite light nor quite dark, printed in dense ink.
+mid-grey sheet with a faint cool cast, neither quite light nor quite dark,
+printed in dense ink.
 
 - **Code is set like a book.** One dark ink for everything that matters,
   with typography for structure: **bold** keywords and definitions,
@@ -14,10 +15,13 @@ mid-grey sheet, neither quite light nor quite dark, printed in dense ink.
   The other colours only mark state: diagnostics, diffs, git. How much
   colour there is is one setting, `saturation`, from 0 (grey) to 1 (as
   vivid as the screen allows).
+- **The interface is an e-reader's.** Floats get hairline borders and
+  inverted title tabs; the selected item in a menu or picker is a solid ink
+  bar; text selections are grey bands; search inverts the ink.
 - **Light and dark** follow `'background'`, so `:set background=dark` switches
   live, and lualine follows.
 
-The grey page and much of the interface come from
+The idea of the mid-grey page comes from
 [e-ink.nvim](https://github.com/e-ink-colorscheme/e-ink.nvim).
 
 ## The page
@@ -32,7 +36,7 @@ The grey page and much of the interface come from
 | comments                                | cursive | `#767676` | `#858585` |
 | strings                                 |         | `#33547e` | `#9abbde` |
 | numbers, booleans, `nil`, escapes       |         | `#984041` | `#d78e8d` |
-| paper                                   |         | `#cccccc` | `#333333` |
+| paper                                   |         | `#cacdce` | `#313335` |
 
 Colours are shown at the default `saturation = 0.6`. They are computed in
 OKLCH, so each keeps its lightness while the saturation changes.

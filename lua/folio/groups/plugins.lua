@@ -1,6 +1,6 @@
--- Plugin highlights. Same rules as the editor: grey backgrounds, lists
--- select with a grey band, matches are bold ink, colour only where it
--- carries meaning.
+-- Plugin highlights. Same rules as the editor: paper backgrounds, the
+-- selected item in a list is an ink bar, float titles are inverted labels,
+-- matches are bold ink, colour only where it carries meaning.
 return function(hl, c, config)
   local bg = config.transparent and c.none or c.bg
   local syn = c.syntax
@@ -8,7 +8,8 @@ return function(hl, c, config)
   local float = { fg = c.fg, bg = bg }
   local border = { fg = c.fg3, bg = bg }
   local title = { fg = c.fg_def, bold = true }
-  local label = { fg = c.bg, bg = c.fg, bold = true } -- inverted e-ink tab
+  local label = { fg = c.bg, bg = c.fg, bold = true } -- inverted title tab
+  local bar = { fg = c.bg, bg = c.fg } -- the selected item in a list
   local selection = { bg = c.bg_visual }
   local match = { fg = c.fg_def, bold = true }
   local muted = { fg = c.fg4 }
@@ -97,16 +98,16 @@ return function(hl, c, config)
   -- telescope -----------------------------------------------------------------
   hl.TelescopeNormal = float
   hl.TelescopeBorder = border
-  hl.TelescopeTitle = title
+  hl.TelescopeTitle = label
   hl.TelescopePromptNormal = float
   hl.TelescopePromptBorder = { fg = c.fg2, bg = bg }
   hl.TelescopePromptTitle = label
   hl.TelescopePromptPrefix = { fg = c.fg2 }
   hl.TelescopePromptCounter = muted
-  hl.TelescopeResultsTitle = title
-  hl.TelescopePreviewTitle = title
-  hl.TelescopeSelection = { fg = c.fg_strong, bg = c.bg_visual }
-  hl.TelescopeSelectionCaret = { fg = c.fg_def, bg = c.bg_visual, bold = true }
+  hl.TelescopeResultsTitle = label
+  hl.TelescopePreviewTitle = label
+  hl.TelescopeSelection = bar
+  hl.TelescopeSelectionCaret = { fg = c.bg, bg = c.fg, bold = true }
   hl.TelescopeMultiSelection = { fg = c.blue, bold = true }
   hl.TelescopeMultiIcon = { fg = c.blue }
   hl.TelescopeMatching = match
@@ -119,7 +120,7 @@ return function(hl, c, config)
   -- fzf-lua -------------------------------------------------------------------
   hl.FzfLuaNormal = float
   hl.FzfLuaBorder = border
-  hl.FzfLuaTitle = title
+  hl.FzfLuaTitle = label
   hl.FzfLuaCursorLine = selection
   hl.FzfLuaFzfMatch = match
   hl.FzfLuaFzfPrompt = { fg = c.fg2 }
@@ -186,7 +187,7 @@ return function(hl, c, config)
   hl.NeoTreeGitStaged = { fg = c.green }
   hl.NeoTreeGitConflict = { fg = c.red, bold = true }
   hl.NeoTreeFloatBorder = border
-  hl.NeoTreeFloatTitle = title
+  hl.NeoTreeFloatTitle = label
   hl.NeoTreeTitleBar = label
   hl.NeoTreeTabActive = { fg = c.fg_def, bg = bg, bold = true }
   hl.NeoTreeTabInactive = { fg = c.fg4, bg = c.bg_dim }
@@ -344,7 +345,7 @@ return function(hl, c, config)
   hl.WhichKeySeparator = muted
   hl.WhichKeyNormal = float
   hl.WhichKeyBorder = border
-  hl.WhichKeyTitle = title
+  hl.WhichKeyTitle = label
   hl.WhichKeyValue = muted
   hl.WhichKeyIcon = { fg = c.fg3 }
   hl.WhichKeyColorAzure = { fg = c.blue }
@@ -381,17 +382,17 @@ return function(hl, c, config)
   hl.MiniStatuslineFilename = { fg = c.fg2, bg = c.bg_dim }
   hl.MiniStatuslineFileinfo = { fg = c.fg, bg = c.bg_deep }
   hl.MiniStatuslineInactive = { fg = c.fg4, bg = c.bg_dim }
-  hl.MiniPickMatchCurrent = selection
+  hl.MiniPickMatchCurrent = bar
   hl.MiniPickMatchRanges = match
   hl.MiniPickPrompt = { fg = c.fg2, bg = bg }
   hl.MiniPickBorder = border
   hl.MiniPickNormal = float
-  hl.MiniFilesTitleFocused = title
+  hl.MiniFilesTitleFocused = label
   hl.MiniFilesDirectory = { fg = c.fg, bold = true }
   hl.MiniDiffSignAdd = { fg = c.green }
   hl.MiniDiffSignChange = { fg = c.blue }
   hl.MiniDiffSignDelete = { fg = c.red }
-  hl.MiniClueTitle = title
+  hl.MiniClueTitle = label
   hl.MiniClueNextKey = { fg = c.fg_def, bold = true }
   hl.MiniClueDescGroup = { fg = c.blue }
   hl.MiniHipatternsFixme = { fg = c.bg, bg = c.red, bold = true }
@@ -406,7 +407,7 @@ return function(hl, c, config)
   -- noice & nvim-notify -------------------------------------------------------
   hl.NoiceCmdlinePopup = float
   hl.NoiceCmdlinePopupBorder = border
-  hl.NoiceCmdlinePopupTitle = title
+  hl.NoiceCmdlinePopupTitle = label
   hl.NoiceCmdlineIcon = { fg = c.fg3 }
   hl.NoiceCmdlinePopupBorderSearch = { fg = c.yellow, bg = bg }
   hl.NoiceCmdlineIconSearch = { fg = c.yellow }
@@ -648,7 +649,7 @@ return function(hl, c, config)
   -- misc ----------------------------------------------------------------------
   hl.BqfPreviewFloat = float
   hl.BqfPreviewBorder = border
-  hl.BqfPreviewTitle = title
+  hl.BqfPreviewTitle = label
   hl.BqfPreviewThumb = { bg = c.fg4 }
   hl.BqfPreviewSbar = { bg = c.bg_dim }
   hl.BqfPreviewCursorLine = { bg = c.bg_dim }

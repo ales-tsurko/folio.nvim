@@ -1,10 +1,10 @@
 -- Folio palette.
 --
--- A page of e-paper: a matte mid-grey sheet that is neither quite light nor
--- quite dark, printed in dense ink. Code is set like a book: the same dark
--- ink throughout, with weight and slant for structure (bold keywords and
--- definitions, cursive types) and a lighter grey for punctuation. Comments
--- are pencil notes in the margin: grey cursive.
+-- A page of e-paper: a matte mid-grey sheet with a faint cool cast, neither
+-- quite light nor quite dark, printed in dense ink. Code is set like a
+-- book: the same dark ink throughout, with weight and slant for structure
+-- (bold keywords and definitions, cursive types) and a lighter grey for
+-- punctuation. Comments are pencil notes in the margin: grey cursive.
 --
 -- Two coloured inks, as on a two-colour print: blue-black for strings and a
 -- rubric red for literal values (numbers, booleans, nil) and escapes. The
@@ -19,11 +19,12 @@ local M = {}
 
 M.variants = {
   light = {
-    -- paper by contrast level: bg / dim (cursorline, menus) / deep / visual
+    -- paper by contrast level: bg / dim (cursorline, menus) / deep / visual.
+    -- A faint cool cast, like an e-ink panel, at the lightness of plain grey.
     paper = {
-      soft = { bg = "#c2c2c2", bg_dim = "#b8b8b8", bg_deep = "#aeaeae", bg_visual = "#a4a4a4" },
-      medium = { bg = "#cccccc", bg_dim = "#c2c2c2", bg_deep = "#b8b8b8", bg_visual = "#aeaeae" },
-      hard = { bg = "#d6d6d6", bg_dim = "#cccccc", bg_deep = "#c2c2c2", bg_visual = "#b8b8b8" },
+      soft = { bg = "#c0c3c4", bg_dim = "#b6b9ba", bg_deep = "#acafb0", bg_visual = "#a2a5a6" },
+      medium = { bg = "#cacdce", bg_dim = "#c0c3c4", bg_deep = "#b6b9ba", bg_visual = "#acafb0" },
+      hard = { bg = "#d4d7d8", bg_dim = "#cacdce", bg_deep = "#c0c3c4", bg_visual = "#b6b9ba" },
     },
     -- One dark ink for the code; bold words take a slightly lighter shade,
     -- since the heavier strokes already make them darker on the page.
@@ -52,9 +53,9 @@ M.variants = {
 
   dark = {
     paper = {
-      soft = { bg = "#3d3d3d", bg_dim = "#4a4a4a", bg_deep = "#545454", bg_visual = "#5e5e5e" },
-      medium = { bg = "#333333", bg_dim = "#474747", bg_deep = "#4d4d4d", bg_visual = "#545454" },
-      hard = { bg = "#292929", bg_dim = "#3d3d3d", bg_deep = "#474747", bg_visual = "#4a4a4a" },
+      soft = { bg = "#3b3d3f", bg_dim = "#484a4c", bg_deep = "#525456", bg_visual = "#5c5e60" },
+      medium = { bg = "#313335", bg_dim = "#454749", bg_deep = "#4b4d4f", bg_visual = "#525456" },
+      hard = { bg = "#27292b", bg_dim = "#3b3d3f", bg_deep = "#454749", bg_visual = "#484a4c" },
     },
     ink = {
       fg_strong = "#cacaca",

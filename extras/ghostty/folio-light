@@ -1,9 +1,9 @@
 # folio-light — generated from the folio palette by extras/generate.lua
-background = #cccccc
+background = #cacdce
 foreground = #2e2e2e
 cursor-color = #2e2e2e
-cursor-text = #cccccc
-selection-background = #aeaeae
+cursor-text = #cacdce
+selection-background = #acafb0
 selection-foreground = #2e2e2e
 palette = 0=#474747
 palette = 1=#984041

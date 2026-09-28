@@ -1,5 +1,6 @@
--- Editor UI, after e-ink.nvim: every background is grey. Floats share the
--- page and get a border, selections are grey bands, search inverts the ink.
+-- Editor UI, like an e-reader's: every background is paper, floats get a
+-- hairline border and an inverted title, the selected item in a list is a
+-- solid ink bar, text selections are grey bands, search inverts the ink.
 return function(hl, c, config)
   local bg = config.transparent and c.none or c.bg
 
@@ -9,7 +10,7 @@ return function(hl, c, config)
   end
   hl.NormalFloat = { fg = c.fg, bg = bg }
   hl.FloatBorder = { fg = c.fg3, bg = bg }
-  hl.FloatTitle = { fg = c.fg_def, bg = bg, bold = true }
+  hl.FloatTitle = { fg = c.bg, bg = c.fg, bold = true }
   hl.FloatFooter = { fg = c.fg3, bg = bg, italic = true }
 
   -- cursor & lines
@@ -42,16 +43,16 @@ return function(hl, c, config)
   hl.MatchParen = { fg = c.fg_def, bg = c.bg_deep, bold = true }
   hl.QuickFixLine = { bg = c.bg_dim, bold = true }
 
-  -- popup menu: a darker sheet; the selection is the same grey band as a
-  -- visual selection (plugins paint coloured kinds on it, so no inversion)
+  -- popup menu: a darker sheet; the selected item is an ink bar. PmenuSel
+  -- sets a foreground, so it also recolours what plugins paint on that row.
   hl.Pmenu = { fg = c.fg, bg = c.bg_dim }
-  hl.PmenuSel = { fg = c.fg_strong, bg = c.bg_visual }
+  hl.PmenuSel = { fg = c.bg, bg = c.fg }
   hl.PmenuKind = { fg = c.fg3, bg = c.bg_dim }
-  hl.PmenuKindSel = { fg = c.fg2, bg = c.bg_visual }
+  hl.PmenuKindSel = { fg = c.bg, bg = c.fg }
   hl.PmenuExtra = { fg = c.fg3, bg = c.bg_dim, italic = true }
-  hl.PmenuExtraSel = { fg = c.fg2, bg = c.bg_visual, italic = true }
+  hl.PmenuExtraSel = { fg = c.bg, bg = c.fg, italic = true }
   hl.PmenuMatch = { fg = c.fg_def, bg = c.bg_dim, bold = true }
-  hl.PmenuMatchSel = { fg = c.fg_def, bg = c.bg_visual, bold = true }
+  hl.PmenuMatchSel = { fg = c.bg, bg = c.fg, bold = true }
   hl.PmenuSbar = { bg = c.bg_dim }
   hl.PmenuThumb = { bg = c.fg5 }
   hl.PmenuBorder = { fg = c.fg3, bg = c.bg_dim }
@@ -67,7 +68,7 @@ return function(hl, c, config)
   hl.StatusLineTermNC = { link = "StatusLineNC" }
   hl.TabLine = { fg = c.fg2, bg = c.bg_visual }
   hl.TabLineFill = { bg = bg }
-  hl.TabLineSel = { fg = c.fg_def, bg = bg, bold = true }
+  hl.TabLineSel = { fg = c.bg, bg = c.fg, bold = true }
   hl.WinBar = { fg = c.fg, bg = c.bg_visual }
   hl.WinBarNC = { fg = c.fg2, bg = c.bg_visual }
 
