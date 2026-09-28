@@ -39,11 +39,11 @@ mark them, and colouring them would put pink on every Lua module.
 
 ## Install
 
-With [lazy.nvim](https://github.com/folke/lazy.nvim), from a local checkout:
+With [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
 {
-  dir = "~/path/to/folio.nvim",
+  "ales-tsurko/folio.nvim",
   lazy = false,
   priority = 1000,
   config = function()
@@ -149,20 +149,25 @@ nvim-web-devicons draws its own colours. For an all-grey page, set
 
 ## Terminal themes
 
-`extras/` has matching themes for kitty, WezTerm, Ghostty and Alacritty,
-generated from the same palette:
+[`extras/`](extras) has matching themes for kitty, WezTerm, Ghostty and
+Alacritty. With lazy.nvim they are already on disk, under
+`~/.local/share/nvim/lazy/folio.nvim/extras/`:
+
+- **kitty:** in `kitty.conf`, add
+  `include ~/.local/share/nvim/lazy/folio.nvim/extras/kitty/folio-light.conf`.
+- **WezTerm:** copy `extras/wezterm/folio-light.toml` to
+  `~/.config/wezterm/colors/`, then set `config.color_scheme = "folio-light"`.
+- **Ghostty:** copy `extras/ghostty/folio-light` to `~/.config/ghostty/themes/`,
+  then set `theme = folio-light`.
+- **Alacritty:** set
+  `general.import = ["~/.local/share/nvim/lazy/folio.nvim/extras/alacritty/folio-light.toml"]`.
+
+Swap `light` for `dark` for the dark variant. The files are generated from the
+palette. After changing it, regenerate them from the repository root:
 
 ```sh
 nvim -l extras/generate.lua
 ```
-
-- **kitty:** `include extras/kitty/folio-light.conf`
-- **WezTerm:** copy `extras/wezterm/folio-light.toml` to
-  `~/.config/wezterm/colors/`, then set
-  `config.color_scheme = "folio-light"`.
-- **Ghostty:** copy `extras/ghostty/folio-light` to `~/.config/ghostty/themes/`,
-  then set `theme = folio-light`.
-- **Alacritty:** `general.import = ["…/extras/alacritty/folio-light.toml"]`
 
 ## Layout
 
