@@ -3,14 +3,14 @@
 name = "folio-dark"
 
 [colors]
-foreground = "#adadad"
-background = "#3a3a3a"
-cursor_bg = "#f0f0f0"
-cursor_fg = "#3a3a3a"
-cursor_border = "#f0f0f0"
-selection_bg = "#5b5b5b"
-selection_fg = "#f0f0f0"
-split = "#878787"
-scrollbar_thumb = "#4e4e4e"
-ansi = ["#4e4e4e", "#fe564d", "#12f348", "#fcd513", "#5aa8fd", "#ff44b0", "#19e8df", "#9a9a9a"]
-brights = ["#6b6b6b", "#fe796d", "#6dff79", "#ffe892", "#7ab9fe", "#fe56a3", "#1ffaf1", "#f0f0f0"]
+foreground = "#aeaeae"
+background = "#333333"
+cursor_bg = "#cccccc"
+cursor_fg = "#333333"
+cursor_border = "#cccccc"
+selection_bg = "#545454"
+selection_fg = "#cccccc"
+split = "#868686"
+scrollbar_thumb = "#4d4d4d"
+ansi = ["#4d4d4d", "#dd8177", "#85d673", "#e7c77a", "#85afde", "#df84a8", "#7bcfc9", "#9a9a9a"]
+brights = ["#686868", "#ee968c", "#7ef164", "#f7db99", "#99c2ef", "#ef9abb", "#6de8e1", "#cccccc"]

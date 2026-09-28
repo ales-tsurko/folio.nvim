@@ -3,13 +3,14 @@
 -- Greyscale is the core and contrast is the highlighter, on the e-ink.nvim
 -- page. Each kind of word has its own grey:
 --   darkest    functions — calls, and definitions (bold);
---   dark       keywords (bold) — e-ink's main ink;
+--   dark       keywords (bold);
 --   body       variables, fields, parameters;
 --   middle     types (italic), self/this (italic);
 --   light      operators, punctuation, modules;
 --   lightest   comments (italic).
--- Colour is rare and loud: neon orange strings, neon pink literal values
--- (numbers, booleans, nil) and escapes.
+-- Strings are ink too — a warm, sepia grey — because in data files they are
+-- most of the page. Colour is kept for the few small things worth finding:
+-- literal values (numbers, booleans, nil) and escapes.
 return function(hl, c, config)
   local s = config.styles
   local syn = c.syntax
@@ -52,11 +53,11 @@ return function(hl, c, config)
   hl.Macro = { fg = c.fg2 }
   hl.PreCondit = { fg = c.fg2 }
   hl.Type = type
-  hl.Special = { fg = syn.special }
+  hl.Special = { fg = c.fg2 }
   hl.SpecialChar = { fg = syn.special }
   hl.Tag = { fg = c.fg_dark, bold = true }
   hl.Delimiter = { fg = c.fg3 }
-  hl.Debug = { fg = syn.special }
+  hl.Debug = { fg = c.fg2 }
   hl.Underlined = { underline = true }
   hl.Ignore = { fg = c.fg5 }
   hl.Error = { fg = c.red }
@@ -82,12 +83,12 @@ return function(hl, c, config)
 
   hl["@string"] = string
   hl["@string.documentation"] = comment
-  hl["@string.regexp"] = { fg = syn.special }
+  hl["@string.regexp"] = string
   hl["@string.escape"] = { fg = syn.special }
-  hl["@string.special"] = { fg = syn.special }
-  hl["@string.special.symbol"] = constant
+  hl["@string.special"] = string
+  hl["@string.special.symbol"] = string
   hl["@string.special.path"] = string
-  hl["@string.special.url"] = { fg = c.blue, underline = true }
+  hl["@string.special.url"] = with(string, { underline = true })
   hl["@character"] = string
   hl["@character.special"] = { fg = syn.special }
   hl["@boolean"] = constant
@@ -129,8 +130,7 @@ return function(hl, c, config)
   hl["@punctuation"] = { fg = c.fg3 }
   hl["@punctuation.delimiter"] = { fg = c.fg3 }
   hl["@punctuation.bracket"] = { fg = c.fg3 }
-  hl["@punctuation.special"] = { fg = syn.special }
-  hl["@punctuation.special.markdown"] = { fg = c.fg3 } -- table pipes, quote bars
+  hl["@punctuation.special"] = { fg = c.fg3 } -- ${…}, YAML ---, markdown bars
 
   hl["@comment"] = comment
   hl["@comment.documentation"] = comment
@@ -143,7 +143,7 @@ return function(hl, c, config)
   hl["@markup.italic"] = { italic = true }
   hl["@markup.strikethrough"] = { strikethrough = true }
   hl["@markup.underline"] = { underline = true }
-  hl["@markup.heading"] = { fg = c.fg_strong, bold = true }
+  hl["@markup.heading"] = { fg = syn.definition, bold = true }
   hl["@markup.heading.1"] = { fg = syn.definition, bold = true }
   hl["@markup.heading.2"] = { fg = syn.definition, bold = true }
   hl["@markup.heading.3"] = { fg = c.fg_dark, bold = true }
@@ -151,9 +151,9 @@ return function(hl, c, config)
   hl["@markup.heading.5"] = { fg = c.fg2, bold = true }
   hl["@markup.heading.6"] = { fg = c.fg2, bold = true }
   hl["@markup.quote"] = { fg = c.fg, italic = true }
-  hl["@markup.math"] = { fg = syn.special }
-  hl["@markup.link"] = { fg = c.blue }
-  hl["@markup.link.label"] = { fg = c.blue }
+  hl["@markup.math"] = string
+  hl["@markup.link"] = { fg = c.fg_dark }
+  hl["@markup.link.label"] = { fg = c.fg_dark, underline = true }
   hl["@markup.link.url"] = { fg = c.fg3, underline = true }
   hl["@markup.raw"] = { fg = c.fg2, bg = c.bg_dim }
   hl["@markup.raw.block"] = { fg = c.fg2 }

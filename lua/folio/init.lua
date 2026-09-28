@@ -10,6 +10,9 @@ M.defaults = {
   dim_inactive = false,
   -- Define vim.g.terminal_color_0..15.
   terminal_colors = true,
+  -- How much colour the accents carry: 0 = grey, 1 = neon (the most the
+  -- sRGB gamut allows for each hue).
+  saturation = 0.6,
   -- Pure greyscale syntax: colour only for diagnostics and diffs.
   mono = false,
   -- Font variants per syntax role. Any nvim_set_hl() attributes work here,

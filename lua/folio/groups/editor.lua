@@ -9,7 +9,7 @@ return function(hl, c, config)
   end
   hl.NormalFloat = { fg = c.fg, bg = bg }
   hl.FloatBorder = { fg = c.fg3, bg = bg }
-  hl.FloatTitle = { fg = c.fg_strong, bg = bg, bold = true }
+  hl.FloatTitle = { fg = c.fg_def, bg = bg, bold = true }
   hl.FloatFooter = { fg = c.fg3, bg = bg, italic = true }
 
   -- cursor & lines
@@ -21,7 +21,7 @@ return function(hl, c, config)
   hl.CursorColumn = { bg = c.bg_dim }
   hl.ColorColumn = { bg = c.bg_dim }
   hl.LineNr = { fg = c.fg4 }
-  hl.CursorLineNr = { fg = c.fg_strong, bold = true }
+  hl.CursorLineNr = { fg = c.fg_def, bold = true }
   hl.SignColumn = { fg = c.fg4 }
   hl.FoldColumn = { fg = c.fg4 }
   hl.Folded = { fg = c.fg3, bg = c.bg_dim, italic = true }
@@ -39,7 +39,7 @@ return function(hl, c, config)
   hl.CurSearch = { fg = c.bg, bg = c.fg, bold = true }
   hl.IncSearch = { link = "CurSearch" }
   hl.Substitute = { fg = c.bg, bg = c.fg2 }
-  hl.MatchParen = { fg = c.fg_strong, bg = c.bg_deep, bold = true }
+  hl.MatchParen = { fg = c.fg_def, bg = c.bg_deep, bold = true }
   hl.QuickFixLine = { bg = c.bg_dim, bold = true }
 
   -- popup menu: a darker sheet; the selection is the same grey band as a
@@ -50,8 +50,8 @@ return function(hl, c, config)
   hl.PmenuKindSel = { fg = c.fg2, bg = c.bg_visual }
   hl.PmenuExtra = { fg = c.fg3, bg = c.bg_dim, italic = true }
   hl.PmenuExtraSel = { fg = c.fg2, bg = c.bg_visual, italic = true }
-  hl.PmenuMatch = { fg = c.fg_strong, bg = c.bg_dim, bold = true }
-  hl.PmenuMatchSel = { fg = c.fg_strong, bg = c.bg_visual, bold = true }
+  hl.PmenuMatch = { fg = c.fg_def, bg = c.bg_dim, bold = true }
+  hl.PmenuMatchSel = { fg = c.fg_def, bg = c.bg_visual, bold = true }
   hl.PmenuSbar = { bg = c.bg_dim }
   hl.PmenuThumb = { bg = c.fg5 }
   hl.PmenuBorder = { fg = c.fg3, bg = c.bg_dim }
@@ -67,22 +67,22 @@ return function(hl, c, config)
   hl.StatusLineTermNC = { link = "StatusLineNC" }
   hl.TabLine = { fg = c.fg2, bg = c.bg_visual }
   hl.TabLineFill = { bg = bg }
-  hl.TabLineSel = { fg = c.fg_strong, bg = bg, bold = true }
+  hl.TabLineSel = { fg = c.fg_def, bg = bg, bold = true }
   hl.WinBar = { fg = c.fg, bg = c.bg_visual }
   hl.WinBarNC = { fg = c.fg2, bg = c.bg_visual }
 
   -- messages
   hl.MsgArea = { fg = c.fg }
   hl.MsgSeparator = { fg = c.fg3, bg = bg }
-  hl.ModeMsg = { fg = c.fg_strong, bold = true }
+  hl.ModeMsg = { fg = c.fg_def, bold = true }
   hl.MoreMsg = { fg = c.fg2, bold = true }
-  hl.Question = { fg = c.fg_strong, bold = true }
+  hl.Question = { fg = c.fg_def, bold = true }
   hl.ErrorMsg = { fg = c.red, bold = true }
   hl.WarningMsg = { fg = c.yellow, bold = true }
   hl.OkMsg = { fg = c.green }
   hl.StderrMsg = { link = "ErrorMsg" }
   hl.StdoutMsg = { fg = c.fg }
-  hl.Title = { fg = c.fg_strong, bold = true }
+  hl.Title = { fg = c.fg_def, bold = true }
   hl.Directory = { fg = c.fg_dark, bold = true }
 
   -- spelling: undercurl in the colour of the problem
@@ -126,7 +126,7 @@ return function(hl, c, config)
   hl.LspReferenceRead = { link = "LspReferenceText" }
   hl.LspReferenceWrite = { bg = c.bg_deep, underline = true, sp = c.fg3 }
   hl.LspReferenceTarget = { link = "LspReferenceText" }
-  hl.LspSignatureActiveParameter = { fg = c.fg_strong, bg = c.bg_deep, bold = true }
+  hl.LspSignatureActiveParameter = { fg = c.fg_def, bg = c.bg_deep, bold = true }
   hl.LspInlayHint = { fg = c.fg4, italic = true }
   hl.LspCodeLens = { fg = c.fg4, italic = true }
   hl.LspCodeLensSeparator = { fg = c.fg5 }

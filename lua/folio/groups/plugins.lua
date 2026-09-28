@@ -7,10 +7,10 @@ return function(hl, c, config)
 
   local float = { fg = c.fg, bg = bg }
   local border = { fg = c.fg3, bg = bg }
-  local title = { fg = c.fg_strong, bold = true }
+  local title = { fg = c.fg_def, bold = true }
   local label = { fg = c.bg, bg = c.fg, bold = true } -- inverted e-ink tab
   local selection = { bg = c.bg_visual }
-  local match = { fg = c.fg_strong, bold = true }
+  local match = { fg = c.fg_def, bold = true }
   local muted = { fg = c.fg4 }
 
   -- LSP completion-item kinds (cmp, blink, noice, dropbar, ...) follow the
@@ -106,7 +106,7 @@ return function(hl, c, config)
   hl.TelescopeResultsTitle = title
   hl.TelescopePreviewTitle = title
   hl.TelescopeSelection = { fg = c.fg_strong, bg = c.bg_visual }
-  hl.TelescopeSelectionCaret = { fg = c.fg_strong, bg = c.bg_visual, bold = true }
+  hl.TelescopeSelectionCaret = { fg = c.fg_def, bg = c.bg_visual, bold = true }
   hl.TelescopeMultiSelection = { fg = c.blue, bold = true }
   hl.TelescopeMultiIcon = { fg = c.blue }
   hl.TelescopeMatching = match
@@ -156,11 +156,11 @@ return function(hl, c, config)
   hl.NeoTreeEndOfBuffer = { link = "EndOfBuffer" }
   hl.NeoTreeWinSeparator = { link = "WinSeparator" }
   hl.NeoTreeCursorLine = { bg = c.bg_dim }
-  hl.NeoTreeRootName = { fg = c.fg_strong, bold = true }
+  hl.NeoTreeRootName = { fg = c.fg_def, bold = true }
   hl.NeoTreeDirectoryName = { fg = c.fg }
   hl.NeoTreeDirectoryIcon = { fg = c.fg3 }
   hl.NeoTreeFileName = { fg = c.fg }
-  hl.NeoTreeFileNameOpened = { fg = c.fg_strong, bold = true }
+  hl.NeoTreeFileNameOpened = { fg = c.fg_def, bold = true }
   hl.NeoTreeFileIcon = { fg = c.fg3 }
   hl.NeoTreeIndentMarker = { fg = c.fg5 }
   hl.NeoTreeExpander = muted
@@ -188,7 +188,7 @@ return function(hl, c, config)
   hl.NeoTreeFloatBorder = border
   hl.NeoTreeFloatTitle = title
   hl.NeoTreeTitleBar = label
-  hl.NeoTreeTabActive = { fg = c.fg_strong, bg = bg, bold = true }
+  hl.NeoTreeTabActive = { fg = c.fg_def, bg = bg, bold = true }
   hl.NeoTreeTabInactive = { fg = c.fg4, bg = c.bg_dim }
   hl.NeoTreeTabSeparatorActive = { fg = c.bg_dim, bg = bg }
   hl.NeoTreeTabSeparatorInactive = { fg = c.bg_dim, bg = c.bg_dim }
@@ -196,13 +196,13 @@ return function(hl, c, config)
   -- nvim-tree -----------------------------------------------------------------
   hl.NvimTreeNormal = { fg = c.fg, bg = bg }
   hl.NvimTreeWinSeparator = { link = "WinSeparator" }
-  hl.NvimTreeRootFolder = { fg = c.fg_strong, bold = true }
+  hl.NvimTreeRootFolder = { fg = c.fg_def, bold = true }
   hl.NvimTreeFolderName = { fg = c.fg }
   hl.NvimTreeOpenedFolderName = { fg = c.fg, bold = true }
   hl.NvimTreeEmptyFolderName = muted
   hl.NvimTreeFolderIcon = { fg = c.fg3 }
   hl.NvimTreeIndentMarker = { fg = c.fg5 }
-  hl.NvimTreeOpenedFile = { fg = c.fg_strong, bold = true }
+  hl.NvimTreeOpenedFile = { fg = c.fg_def, bold = true }
   hl.NvimTreeSpecialFile = { fg = c.fg, underline = true }
   hl.NvimTreeSymlink = { fg = c.teal }
   hl.NvimTreeGitNew = { fg = c.green }
@@ -286,15 +286,15 @@ return function(hl, c, config)
   hl.NeogitBranch = { fg = c.blue, bold = true }
   hl.NeogitBranchHead = { fg = c.blue, bold = true, underline = true }
   hl.NeogitRemote = { fg = c.violet, bold = true }
-  hl.NeogitSectionHeader = { fg = c.fg_strong, bold = true }
+  hl.NeogitSectionHeader = { fg = c.fg_def, bold = true }
   hl.NeogitObjectId = muted
   hl.NeogitStash = { fg = c.fg3 }
   hl.NeogitFilePath = { fg = c.blue, italic = true }
   hl.NeogitTagName = { fg = c.yellow }
   hl.NeogitHunkHeader = { fg = c.fg2, bg = c.bg_deep, bold = true }
-  hl.NeogitHunkHeaderHighlight = { fg = c.fg_strong, bg = c.bg_visual, bold = true }
-  hl.NeogitDiffHeader = { fg = c.fg_strong, bg = c.bg_deep, bold = true }
-  hl.NeogitDiffHeaderHighlight = { fg = c.fg_strong, bg = c.bg_visual, bold = true }
+  hl.NeogitHunkHeaderHighlight = { fg = c.fg_def, bg = c.bg_visual, bold = true }
+  hl.NeogitDiffHeader = { fg = c.fg_def, bg = c.bg_deep, bold = true }
+  hl.NeogitDiffHeaderHighlight = { fg = c.fg_def, bg = c.bg_visual, bold = true }
   hl.NeogitDiffContext = { fg = c.fg2, bg = bg }
   hl.NeogitDiffContextHighlight = { fg = c.fg, bg = c.bg_dim }
   hl.NeogitDiffAdd = { fg = c.green, bg = c.green_tint }
@@ -322,11 +322,11 @@ return function(hl, c, config)
   hl.diffChanged = { fg = c.blue }
   hl.diffOldFile = { fg = c.red, italic = true }
   hl.diffNewFile = { fg = c.green, italic = true }
-  hl.diffFile = { fg = c.fg_strong, bold = true }
+  hl.diffFile = { fg = c.fg_def, bold = true }
   hl.diffLine = { fg = c.violet }
   hl.diffIndexLine = { fg = c.fg3 }
   hl.diffSubname = { fg = c.fg3 }
-  hl.gitcommitSummary = { fg = c.fg_strong, bold = true }
+  hl.gitcommitSummary = { fg = c.fg_def, bold = true }
   hl.gitcommitOverflow = { fg = c.red }
   hl.gitcommitBranch = { fg = c.blue, bold = true }
   hl.gitcommitSelectedFile = { fg = c.green }
@@ -338,7 +338,7 @@ return function(hl, c, config)
   hl.fugitiveUntrackedHeading = { fg = c.teal, bold = true }
 
   -- which-key -----------------------------------------------------------------
-  hl.WhichKey = { fg = c.fg_strong, bold = true }
+  hl.WhichKey = { fg = c.fg_def, bold = true }
   hl.WhichKeyGroup = { fg = c.blue }
   hl.WhichKeyDesc = { fg = c.fg }
   hl.WhichKeySeparator = muted
@@ -392,7 +392,7 @@ return function(hl, c, config)
   hl.MiniDiffSignChange = { fg = c.blue }
   hl.MiniDiffSignDelete = { fg = c.red }
   hl.MiniClueTitle = title
-  hl.MiniClueNextKey = { fg = c.fg_strong, bold = true }
+  hl.MiniClueNextKey = { fg = c.fg_def, bold = true }
   hl.MiniClueDescGroup = { fg = c.blue }
   hl.MiniHipatternsFixme = { fg = c.bg, bg = c.red, bold = true }
   hl.MiniHipatternsHack = { fg = c.bg, bg = c.yellow, bold = true }
@@ -479,13 +479,13 @@ return function(hl, c, config)
   hl.FlashCurrent = { fg = c.bg, bg = c.fg }
   hl.FlashLabel = { fg = c.bg, bg = c.orange, bold = true }
   hl.LeapBackdrop = { fg = c.fg4 }
-  hl.LeapMatch = { fg = c.fg_strong, bold = true, underline = true }
+  hl.LeapMatch = { fg = c.fg_def, bold = true, underline = true }
   hl.LeapLabel = { fg = c.bg, bg = c.orange, bold = true }
   hl.HopNextKey = { fg = c.red, bold = true }
   hl.HopNextKey1 = { fg = c.blue, bold = true }
   hl.HopNextKey2 = { fg = c.blue }
   hl.HopUnmatched = { fg = c.fg4 }
-  hl.EyelinerPrimary = { fg = c.fg_strong, bold = true, underline = true }
+  hl.EyelinerPrimary = { fg = c.fg_def, bold = true, underline = true }
   hl.EyelinerSecondary = { fg = c.fg2, underline = true }
   hl.IlluminatedWordText = { link = "LspReferenceText" }
   hl.IlluminatedWordRead = { link = "LspReferenceRead" }
@@ -509,9 +509,9 @@ return function(hl, c, config)
   hl.RenderMarkdownChecked = { fg = c.green }
   hl.RenderMarkdownUnchecked = { fg = c.fg3 }
   hl.RenderMarkdownTodo = { fg = c.yellow }
-  hl.RenderMarkdownLink = { fg = c.blue }
+  hl.RenderMarkdownLink = { fg = c.fg_dark }
   hl.RenderMarkdownSign = { fg = c.fg4 }
-  hl.RenderMarkdownMath = { fg = syn.special }
+  hl.RenderMarkdownMath = { fg = syn.string }
   hl.RenderMarkdownInlineHighlight = { bg = c.bg_visual }
 
   hl["@org.headline.level1"] = { fg = syn.definition, bold = true }
@@ -530,7 +530,7 @@ return function(hl, c, config)
   hl["@org.priority.default"] = { fg = c.fg3 }
   hl["@org.priority.low"] = muted
   hl["@org.priority.lowest"] = muted
-  hl["@org.timestamp.active"] = { fg = c.blue }
+  hl["@org.timestamp.active"] = { fg = c.fg_dark }
   hl["@org.timestamp.inactive"] = { fg = c.fg4, italic = true }
   hl["@org.bullet"] = { fg = c.fg3 }
   hl["@org.checkbox"] = { fg = c.fg3 }
@@ -546,15 +546,15 @@ return function(hl, c, config)
   hl["@org.block"] = { fg = c.fg2 }
   hl["@org.code"] = { fg = c.fg2, bg = c.bg_dim }
   hl["@org.verbatim"] = { fg = c.fg2, bg = c.bg_dim }
-  hl["@org.latex"] = { fg = syn.special }
+  hl["@org.latex"] = { fg = syn.string }
   hl["@org.footnote"] = { fg = c.fg3 }
   hl["@org.table.delimiter"] = muted
-  hl["@org.table.heading"] = { fg = c.fg_strong, bold = true }
+  hl["@org.table.heading"] = { fg = c.fg_def, bold = true }
   hl["@org.agenda.deadline"] = { fg = c.red }
   hl["@org.agenda.deadline.upcoming"] = { fg = c.yellow }
   hl["@org.agenda.scheduled"] = { fg = c.green }
   hl["@org.agenda.scheduled_past"] = { fg = c.orange }
-  hl["@org.agenda.today"] = { fg = c.fg_strong, bold = true, underline = true }
+  hl["@org.agenda.today"] = { fg = c.fg_def, bold = true, underline = true }
   hl["@org.agenda.weekend"] = { fg = c.fg3 }
   hl["@org.agenda.header"] = title
   hl["@org.agenda.separator"] = { fg = c.fg5 }
@@ -568,11 +568,11 @@ return function(hl, c, config)
     hl["VimwikiHeader" .. i] = { link = "@markup.heading." .. i }
   end
   hl.VimwikiHeaderChar = { fg = c.fg3 }
-  hl.VimwikiLink = { fg = c.blue, underline = true }
+  hl.VimwikiLink = { fg = c.fg_dark, underline = true }
   hl.VimwikiList = { fg = c.fg3 }
   hl.VimwikiCode = { link = "@markup.raw" }
   hl.VimwikiPre = { fg = c.fg2 }
-  hl.VimwikiBold = { fg = c.fg_strong, bold = true }
+  hl.VimwikiBold = { fg = c.fg_def, bold = true }
   hl.VimwikiItalic = { italic = true }
   hl.VimwikiBoldItalic = { bold = true, italic = true }
   hl.VimwikiDelText = { fg = c.fg4, strikethrough = true }
@@ -597,7 +597,7 @@ return function(hl, c, config)
   -- lazy.nvim & mason ---------------------------------------------------------
   hl.LazyNormal = float
   hl.LazyH1 = label
-  hl.LazyH2 = { fg = c.fg_strong, bold = true }
+  hl.LazyH2 = { fg = c.fg_def, bold = true }
   hl.LazyButton = { fg = c.fg2, bg = c.bg_dim }
   hl.LazyButtonActive = label
   hl.LazySpecial = { fg = c.blue }

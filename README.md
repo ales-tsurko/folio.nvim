@@ -1,17 +1,23 @@
 # folio.nvim
 
-An e-ink colour scheme for Neovim. It is built on the page of
-[e-ink.nvim](https://github.com/e-ink-colorscheme/e-ink.nvim): neutral grey
-paper, grey ink and grey backgrounds. It adds a real hierarchy of greys,
-bold and italic, and a very small amount of neon colour.
+An e-ink colour scheme for Neovim. It keeps the page of
+[e-ink.nvim](https://github.com/e-ink-colorscheme/e-ink.nvim) unchanged: its
+grey paper, its slate, its interface greys, and for every word only greys
+from its 16-level ramp. No word gets more contrast than e-ink allows. Within
+that range, folio gives each kind of word its own grey, uses bold and italic,
+and adds a little colour where it helps you find something.
 
-- **Greyscale is the core; contrast is the highlighter.** Each kind of word
-  has its own grey, and the more a word matters, the stronger its ink.
-- **Bold** marks keywords and names where they are defined. **Italic** marks
-  types, comments and `self`/`this`.
-- **Colour is rare and loud.** Strings are neon orange; numbers, booleans,
-  `nil` and escapes are neon pink. Both sit at the most saturated point the
-  sRGB gamut allows for their hue. Everything else stays grey.
+- **Greyscale is the core; contrast is the highlighter.** The more a word
+  matters, the darker its ink (lighter in dark mode).
+- **Bold** marks keywords and names where they are defined. Bold strokes
+  already read darker, so bold words get lighter ink: weight alone marks
+  them and the contrast stays e-ink's. **Italic** marks types, comments and
+  `self`/`this`.
+- **Colour is rare.** Only literal values (numbers, booleans, `nil`) and
+  escapes are coloured, in rose. Strings are a warm, sepia grey: in data
+  files they are most of the page, so colouring them would colour the page.
+  How much colour there is is one setting, `saturation`, from 0 (grey) to
+  1 (neon).
 - **Light and dark** follow `'background'`, so `:set background=dark` switches
   live, and lualine follows.
 
@@ -19,20 +25,20 @@ bold and italic, and a very small amount of neon colour.
 
 | Words                                   | Style  | Light     | Dark      |
 | --------------------------------------- | ------ | --------- | --------- |
-| function calls                          |        | `#0d0d0d` | `#f0f0f0` |
-| function definitions                    | bold   | `#0d0d0d` | `#d2d2d2` |
-| keywords                                | bold   | `#333333` | `#b1b1b1` |
-| variables, fields, parameters           |        | `#505050` | `#adadad` |
-| types, `self`/`this`                    | italic | `#666666` | `#9a9a9a` |
-| operators, punctuation, modules         |        | `#808080` | `#878787` |
-| comments                                | italic | `#969696` | `#787878` |
-| strings                                 |        | `#fe5101` | `#ff7024` |
-| numbers, booleans, `nil`, escapes       |        | `#ff05a9` | `#ff44b0` |
-| paper                                   |        | `#cccccc` | `#3a3a3a` |
+| function calls                          |        | `#333333` | `#cccccc` |
+| function definitions                    | bold   | `#474747` | `#aeaeae` |
+| keywords                                | bold   | `#5e5e5e` | `#9a9a9a` |
+| variables, fields, parameters           |        | `#5e5e5e` | `#aeaeae` |
+| types, `self`/`this`                    | italic | `#727272` | `#9a9a9a` |
+| operators, punctuation, modules         |        | `#868686` | `#868686` |
+| comments                                | italic | `#909090` | `#727272` |
+| strings                                 |        | `#6e6055` | `#c2ad9a` |
+| numbers, booleans, `nil`, escapes       |        | `#b04d78` | `#df84a8` |
+| paper                                   |        | `#cccccc` | `#333333` |
 
-Light steps are wider than dark ones: thin dark strokes on a light page blur
-together, while light strokes on a dark page stay distinct. On a dark page
-bold text blooms, so bold words sit below the plain words next to them.
+Every neutral grey is one of e-ink.nvim's. Strings and colours are shown at
+the default `saturation = 0.6`; they are computed in OKLCH, so each hue keeps
+its lightness while the saturation changes.
 
 Named constants (`MAX_SIZE`, Lua's `M`) stay grey. Their capitals already
 mark them, and colouring them would put pink on every Lua module.
@@ -67,6 +73,9 @@ require("folio").setup({
   dim_inactive = false,
   -- Define vim.g.terminal_color_0..15.
   terminal_colors = true,
+  -- How much colour the accents carry: 0 = grey, 1 = neon (the most the
+  -- sRGB gamut allows for each hue).
+  saturation = 0.6,
   -- Pure greyscale syntax: colour only for diagnostics and diffs.
   mono = false,
   -- Font variants per syntax role; any nvim_set_hl() attributes work.
@@ -92,12 +101,15 @@ Call `setup()` before `:colorscheme folio`.
 
 ```lua
 require("folio").setup({
+  -- more (or less) colour
+  saturation = 0.8,
+
   -- upright types, and keywords in italic instead of bold
   styles = { types = { italic = false }, keywords = { bold = false, italic = true } },
 
-  -- a different spot colour (tints and terminal colours follow)
+  -- a different rose for literal values (its tints follow)
   on_colors = function(c)
-    if c.variant == "light" then c.orange = "#e54800" end
+    if c.variant == "light" then c.pink = "#a23b72" end
   end,
 
   -- give types a colour of their own
@@ -115,7 +127,8 @@ require("folio").setup({
 `c` holds the paper (`bg`, `bg_dim`, `bg_deep`, `bg_visual`), the ink ladder
 (`fg_strong`, `fg_def`, `fg_dark`, `fg`, `fg2`, `fg3`, `comment`, `fg4`,
 `fg5`), the accents (`red`, `orange`, `yellow`, `green`, `teal`, `blue`,
-`violet`, `pink`) with `_tint`/`_wash` backgrounds, and `c.variant`.
+`violet`, `pink`) with `_tint`/`_wash` backgrounds, `sepia` (strings), and
+`c.variant`.
 `syntax` holds the roles `keyword`, `definition`, `call`, `type`, `string`,
 `constant` and `special`. `require("folio").colors()` returns the table for
 the current background.
