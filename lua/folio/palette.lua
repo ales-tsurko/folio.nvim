@@ -1,16 +1,18 @@
 -- Folio palette.
 --
--- The page is e-ink.nvim's, unchanged: its grey paper (#cccccc) and slate
--- (#333333), its cursorline and selection greys, and — for every word —
--- only greys from its 16-level ramp, so no word gets more contrast than
--- e-ink allows. Within that range each kind of word has its own grey, and
--- bold and italic do the rest.
+-- A page of e-paper: a matte mid-grey sheet that is neither quite light nor
+-- quite dark, printed in dense ink. Code is set like a book: the same dark
+-- ink throughout, with weight and slant for structure (bold keywords and
+-- definitions, cursive types) and a lighter grey for punctuation. Comments
+-- are pencil notes in the margin: grey cursive.
 --
--- Colour is rare: literal values and escapes. Strings are a warm grey with
--- only a trace of hue, since in data files they are most of the page.
--- Accents are defined in OKLCH as a lightness and a hue; their chroma is
--- `saturation` times the most the sRGB gamut allows there (0 = grey,
--- 1 = neon).
+-- Two coloured inks, as on a two-colour print: blue-black for strings and a
+-- rubric red for literal values (numbers, booleans, nil) and escapes. The
+-- other accents only mark state (diagnostics, diffs, git).
+--
+-- Colours are given in OKLCH as { lightness, hue, strength }. Their chroma
+-- is strength × `saturation` × the most sRGB allows at that lightness and
+-- hue, so `saturation` runs from 0 (grey) to 1 (as vivid as it gets).
 local util = require("folio.util")
 
 local M = {}
@@ -23,33 +25,29 @@ M.variants = {
       medium = { bg = "#cccccc", bg_dim = "#c2c2c2", bg_deep = "#b8b8b8", bg_visual = "#aeaeae" },
       hard = { bg = "#d6d6d6", bg_dim = "#cccccc", bg_deep = "#c2c2c2", bg_visual = "#b8b8b8" },
     },
-    -- ink, all from e-ink.nvim's ramp: the more a word matters, the darker.
-    -- Bold strokes already read darker, so bold words get lighter ink than
-    -- their weight suggests: weight alone marks them, contrast stays e-ink.
+    -- One dark ink for the code; bold words take a slightly lighter shade,
+    -- since the heavier strokes already make them darker on the page.
     ink = {
-      fg_strong = "#333333", -- function calls
-      fg_def = "#474747", --    function definitions, emphasis (bold)
-      fg_dark = "#5e5e5e", --   keywords, titles (bold)
-      fg = "#5e5e5e", --        body: variables, fields, parameters
-      fg2 = "#727272", --       types (italic), self/this
-      fg3 = "#868686", --       operators, punctuation, borders
-      comment = "#909090", --   comments (italic)
-      fg4 = "#9a9a9a", --       line numbers, hints
-      fg5 = "#aeaeae", --       guides, whitespace
+      fg_strong = "#2e2e2e", -- cursor, selected items
+      fg = "#2e2e2e", --        code: variables, fields, calls
+      fg_def = "#2e2e2e", --    definitions (bold)
+      fg_dark = "#474747", --   keywords, titles (bold)
+      fg2 = "#4f4f4f", --       types (cursive), self/this
+      fg3 = "#5e5e5e", --       punctuation, operators, modules, borders
+      comment = "#767676", --   comments (cursive)
+      fg4 = "#8a8a8a", --       line numbers, hints
+      fg5 = "#a4a4a4", --       guides, whitespace
     },
-    -- { lightness, hue } in OKLCH
     accent = {
-      red = { 0.52, 27 }, --     errors
-      orange = { 0.58, 45 }, --  jump labels, conflicts, insert mode
-      yellow = { 0.60, 75 }, --  warnings
-      green = { 0.55, 140 }, --  additions
-      teal = { 0.56, 190 }, --   hints
-      blue = { 0.52, 255 }, --   info, changes
-      violet = { 0.50, 305 }, -- renames, misc UI
-      pink = { 0.56, 355 }, --   numbers, booleans, nil, escapes
+      red = { 0.49, 22, 1.0 }, --      literal values, escapes, errors
+      orange = { 0.56, 50, 0.9 }, --   jump labels, conflicts
+      yellow = { 0.58, 80, 0.9 }, --   warnings
+      green = { 0.52, 140, 0.8 }, --   additions
+      teal = { 0.52, 190, 0.8 }, --    hints
+      blue = { 0.44, 255, 0.92 }, --   strings (blue-black ink), info, changes
+      violet = { 0.47, 305, 0.8 }, --  renames, misc UI
+      pink = { 0.52, 350, 0.9 }, --    terminal magenta, visual mode
     },
-    -- strings: a warm grey, only a trace of hue
-    sepia = { 0.50, 60 },
   },
 
   dark = {
@@ -58,30 +56,27 @@ M.variants = {
       medium = { bg = "#333333", bg_dim = "#474747", bg_deep = "#4d4d4d", bg_visual = "#545454" },
       hard = { bg = "#292929", bg_dim = "#3d3d3d", bg_deep = "#474747", bg_visual = "#4a4a4a" },
     },
-    -- bold strokes bloom on a dark page, so bold words sit below the plain
-    -- words next to them
     ink = {
-      fg_strong = "#cccccc",
-      fg_def = "#aeaeae",
-      fg_dark = "#9a9a9a",
-      fg = "#aeaeae",
-      fg2 = "#9a9a9a",
-      fg3 = "#868686",
-      comment = "#727272",
-      fg4 = "#686868",
-      fg5 = "#545454",
+      fg_strong = "#cacaca",
+      fg = "#cacaca",
+      fg_def = "#cacaca",
+      fg_dark = "#b0b0b0",
+      fg2 = "#a6a6a6",
+      fg3 = "#949494",
+      comment = "#858585",
+      fg4 = "#6a6a6a",
+      fg5 = "#565656",
     },
     accent = {
-      red = { 0.70, 27 },
-      orange = { 0.76, 50 },
-      yellow = { 0.84, 88 },
-      green = { 0.80, 140 },
-      teal = { 0.80, 190 },
-      blue = { 0.74, 252 },
-      violet = { 0.72, 305 },
-      pink = { 0.72, 355 },
+      red = { 0.72, 20, 0.86 },
+      orange = { 0.76, 55, 0.8 },
+      yellow = { 0.82, 88, 0.8 },
+      green = { 0.78, 140, 0.7 },
+      teal = { 0.78, 190, 0.7 },
+      blue = { 0.78, 250, 0.89 },
+      violet = { 0.74, 305, 0.7 },
+      pink = { 0.74, 350, 0.8 },
     },
-    sepia = { 0.76, 65 },
   },
 }
 
@@ -103,12 +98,10 @@ function M.get(variant, config)
   local step = variant == "dark" and 0.06 or -0.05
   c.bright = {}
   for _, name in ipairs(accents) do
-    local L, h = v.accent[name][1], v.accent[name][2]
-    c[name] = util.oklch(L, s * util.max_chroma(L, h), h)
-    c.bright[name] = util.oklch(L + step, math.min(1, s * 1.25) * util.max_chroma(L + step, h), h)
+    local L, h, k = unpack(v.accent[name])
+    c[name] = util.oklch(L, k * s * util.max_chroma(L, h), h)
+    c.bright[name] = util.oklch(L + step, math.min(1, k * s * 1.25) * util.max_chroma(L + step, h), h)
   end
-  local sL, sh = v.sepia[1], v.sepia[2]
-  c.sepia = util.oklch(sL, 0.35 * s * util.max_chroma(sL, sh), sh)
 
   if config.on_colors then
     config.on_colors(c)
@@ -127,9 +120,9 @@ function M.get(variant, config)
     definition = c.fg_def,
     call = c.fg_strong,
     type = c.fg2,
-    string = mono and c.fg2 or c.sepia,
-    constant = mono and c.fg2 or c.pink,
-    special = mono and c.fg3 or c.pink,
+    string = mono and c.fg2 or c.blue,
+    constant = mono and c.fg2 or c.red,
+    special = mono and c.fg3 or c.red,
   }
   if config.on_syntax then
     config.on_syntax(c.syntax, c)

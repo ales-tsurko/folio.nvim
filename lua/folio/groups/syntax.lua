@@ -1,16 +1,14 @@
 -- Syntax: legacy groups, tree-sitter captures and LSP semantic tokens.
 --
--- Greyscale is the core and contrast is the highlighter, on the e-ink.nvim
--- page. Each kind of word has its own grey:
---   darkest    functions — calls, and definitions (bold);
---   dark       keywords (bold);
---   body       variables, fields, parameters;
---   middle     types (italic), self/this (italic);
---   light      operators, punctuation, modules;
---   lightest   comments (italic).
--- Strings are ink too — a warm, sepia grey — because in data files they are
--- most of the page. Colour is kept for the few small things worth finding:
--- literal values (numbers, booleans, nil) and escapes.
+-- Code is set like a printed page: one dark ink, with typography for
+-- structure —
+--   ink, bold        keywords, definitions;
+--   ink              variables, fields, calls;
+--   ink, cursive     types, self/this;
+--   grey             operators, punctuation, modules;
+--   pencil, cursive  comments.
+-- Two coloured inks: blue-black for strings, red for literal values
+-- (numbers, booleans, nil) and escapes.
 return function(hl, c, config)
   local s = config.styles
   local syn = c.syntax
@@ -76,6 +74,8 @@ return function(hl, c, config)
   hl["@constant"] = { fg = c.fg }
   hl["@constant.builtin"] = constant
   hl["@constant.macro"] = { fg = c.fg }
+  -- Some/None/Ok/Err are enum variants, not literals (rust-analyzer agrees)
+  hl["@constant.builtin.rust"] = { link = "@constant" }
 
   hl["@module"] = { fg = c.fg3 }
   hl["@module.builtin"] = { fg = c.fg3 }

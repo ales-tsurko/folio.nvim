@@ -10,8 +10,8 @@ M.defaults = {
   dim_inactive = false,
   -- Define vim.g.terminal_color_0..15.
   terminal_colors = true,
-  -- How much colour the accents carry: 0 = grey, 1 = neon (the most the
-  -- sRGB gamut allows for each hue).
+  -- How much colour the inks carry: 0 = grey, 1 = as vivid as the screen
+  -- allows.
   saturation = 0.6,
   -- Pure greyscale syntax: colour only for diagnostics and diffs.
   mono = false,

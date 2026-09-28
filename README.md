@@ -1,47 +1,44 @@
 # folio.nvim
 
-An e-ink colour scheme for Neovim. It keeps the page of
-[e-ink.nvim](https://github.com/e-ink-colorscheme/e-ink.nvim) unchanged: its
-grey paper, its slate, its interface greys, and for every word only greys
-from its 16-level ramp. No word gets more contrast than e-ink allows. Within
-that range, folio gives each kind of word its own grey, uses bold and italic,
-and adds a little colour where it helps you find something.
+A colour scheme for Neovim that looks like a page of e-paper: a matte
+mid-grey sheet, neither quite light nor quite dark, printed in dense ink.
 
-- **Greyscale is the core; contrast is the highlighter.** The more a word
-  matters, the darker its ink (lighter in dark mode).
-- **Bold** marks keywords and names where they are defined. Bold strokes
-  already read darker, so bold words get lighter ink: weight alone marks
-  them and the contrast stays e-ink's. **Italic** marks types, comments and
-  `self`/`this`.
-- **Colour is rare.** Only literal values (numbers, booleans, `nil`) and
-  escapes are coloured, in rose. Strings are a warm, sepia grey: in data
-  files they are most of the page, so colouring them would colour the page.
-  How much colour there is is one setting, `saturation`, from 0 (grey) to
-  1 (neon).
+- **Code is set like a book.** One dark ink for everything that matters,
+  with typography for structure: **bold** keywords and definitions,
+  *cursive* types and `self`/`this`, a lighter grey for punctuation. Bold
+  words take a slightly lighter shade of ink, since the heavier strokes
+  already make them darker on the page.
+- **Comments are pencil notes** in the margin: grey and cursive.
+- **Two coloured inks**, as on a two-colour print: blue-black for strings
+  and a red for literal values (numbers, booleans, `nil`) and escapes.
+  The other colours only mark state: diagnostics, diffs, git. How much
+  colour there is is one setting, `saturation`, from 0 (grey) to 1 (as
+  vivid as the screen allows).
 - **Light and dark** follow `'background'`, so `:set background=dark` switches
   live, and lualine follows.
 
-## The ladder
+The grey page and much of the interface come from
+[e-ink.nvim](https://github.com/e-ink-colorscheme/e-ink.nvim).
 
-| Words                                   | Style  | Light     | Dark      |
-| --------------------------------------- | ------ | --------- | --------- |
-| function calls                          |        | `#333333` | `#cccccc` |
-| function definitions                    | bold   | `#474747` | `#aeaeae` |
-| keywords                                | bold   | `#5e5e5e` | `#9a9a9a` |
-| variables, fields, parameters           |        | `#5e5e5e` | `#aeaeae` |
-| types, `self`/`this`                    | italic | `#727272` | `#9a9a9a` |
-| operators, punctuation, modules         |        | `#868686` | `#868686` |
-| comments                                | italic | `#909090` | `#727272` |
-| strings                                 |        | `#6e6055` | `#c2ad9a` |
-| numbers, booleans, `nil`, escapes       |        | `#b04d78` | `#df84a8` |
-| paper                                   |        | `#cccccc` | `#333333` |
+## The page
 
-Every neutral grey is one of e-ink.nvim's. Strings and colours are shown at
-the default `saturation = 0.6`; they are computed in OKLCH, so each hue keeps
-its lightness while the saturation changes.
+| Words                                   | Style   | Light     | Dark      |
+| --------------------------------------- | ------- | --------- | --------- |
+| variables, fields, calls                |         | `#2e2e2e` | `#cacaca` |
+| function and type definitions           | bold    | `#2e2e2e` | `#cacaca` |
+| keywords                                | bold    | `#474747` | `#b0b0b0` |
+| types, `self`/`this`                    | cursive | `#4f4f4f` | `#a6a6a6` |
+| operators, punctuation, modules         |         | `#5e5e5e` | `#949494` |
+| comments                                | cursive | `#767676` | `#858585` |
+| strings                                 |         | `#33547e` | `#9abbde` |
+| numbers, booleans, `nil`, escapes       |         | `#984041` | `#d78e8d` |
+| paper                                   |         | `#cccccc` | `#333333` |
 
-Named constants (`MAX_SIZE`, Lua's `M`) stay grey. Their capitals already
-mark them, and colouring them would put pink on every Lua module.
+Colours are shown at the default `saturation = 0.6`. They are computed in
+OKLCH, so each keeps its lightness while the saturation changes.
+
+Named constants (`MAX_SIZE`, Lua's `M`) and Rust's `Some`/`None`/`Ok`/`Err`
+stay ink: they are names, not literal values.
 
 ## Install
 
@@ -73,8 +70,8 @@ require("folio").setup({
   dim_inactive = false,
   -- Define vim.g.terminal_color_0..15.
   terminal_colors = true,
-  -- How much colour the accents carry: 0 = grey, 1 = neon (the most the
-  -- sRGB gamut allows for each hue).
+  -- How much colour the inks carry: 0 = grey, 1 = as vivid as the screen
+  -- allows.
   saturation = 0.6,
   -- Pure greyscale syntax: colour only for diagnostics and diffs.
   mono = false,
@@ -107,9 +104,9 @@ require("folio").setup({
   -- upright types, and keywords in italic instead of bold
   styles = { types = { italic = false }, keywords = { bold = false, italic = true } },
 
-  -- a different rose for literal values (its tints follow)
+  -- a different red for literal values (its tints follow)
   on_colors = function(c)
-    if c.variant == "light" then c.pink = "#a23b72" end
+    if c.variant == "light" then c.red = "#8a3a52" end
   end,
 
   -- give types a colour of their own
@@ -124,11 +121,10 @@ require("folio").setup({
 })
 ```
 
-`c` holds the paper (`bg`, `bg_dim`, `bg_deep`, `bg_visual`), the ink ladder
+`c` holds the paper (`bg`, `bg_dim`, `bg_deep`, `bg_visual`), the inks
 (`fg_strong`, `fg_def`, `fg_dark`, `fg`, `fg2`, `fg3`, `comment`, `fg4`,
 `fg5`), the accents (`red`, `orange`, `yellow`, `green`, `teal`, `blue`,
-`violet`, `pink`) with `_tint`/`_wash` backgrounds, `sepia` (strings), and
-`c.variant`.
+`violet`, `pink`) with `_tint`/`_wash` backgrounds, and `c.variant`.
 `syntax` holds the roles `keyword`, `definition`, `call`, `type`, `string`,
 `constant` and `special`. `require("folio").colors()` returns the table for
 the current background.
@@ -187,7 +183,7 @@ nvim -l extras/generate.lua
 ```
 colors/folio.lua              :colorscheme entry point
 lua/folio/init.lua            setup(), load(), colors()
-lua/folio/palette.lua         paper, ink ladder, accents, syntax roles
+lua/folio/palette.lua         paper, ink, accents, syntax roles
 lua/folio/groups/editor.lua   built-in UI
 lua/folio/groups/syntax.lua   legacy groups, tree-sitter, LSP tokens
 lua/folio/groups/plugins.lua  plugins
